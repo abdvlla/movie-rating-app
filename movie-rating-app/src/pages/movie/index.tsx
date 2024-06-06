@@ -48,36 +48,87 @@ export const Movie = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto mt-8 p-5 rounded-xl shadow-lg">
+    <div className="max-w-7xl mx-auto mt-8 p-5 rounded-xl">
       <h2 className="text-3xl font-bold mb-8 text-gray-50">{data.title}</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div>
           <img
             src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
             alt={data.title || "Movie Poster"}
-            className="object-cover rounded-lg shadow-md mx-auto"
+            className="object-cover mx-auto"
           />
         </div>
         <div className="text-left">
           <ul className="font-bold">
             Release Date:
-            <li className="text-gray-400 font-semibold">{data.release_date}</li>
+            <li className="text-gray-400 font-normal">{data.release_date}</li>
           </ul>
-          <p className="text-yellow-500 mt-2">
-            Rating: {data.vote_average.toFixed(1)} ({data.vote_count} votes)
-          </p>
-          <p className="text-gray-300 mt-4">{data.overview}</p>
-          <p className="text-gray-400 mt-4">Movie ID: {data.id}</p>
-          <div className="text-gray-400 mt-4">
-            Genre(s):{" "}
-            {data.genres
-              .map((genre: { name: string }) => genre.name)
-              .join(", ")}
-          </div>
-          <p className="text-gray-400 mt-4">
-            Budget: {USDollar.format(data.budget)}
-          </p>
-          <p className="text-gray-400 mt-4">Popularity: {data.popularity}</p>
+          <ul className="font-bold mt-2">
+            Rating:
+            <li className="text-yellow-500 font-normal">
+              {data.vote_average.toFixed(1)} ({data.vote_count} votes)
+            </li>
+          </ul>
+          <ul className="font-bold mt-2">
+            Plot:
+            <li className="text-gray-300 font-normal">{data.overview}</li>
+          </ul>
+          <ul className="font-bold mt-2">
+            Movie ID:
+            <li className="text-gray-300 font-normal">{data.id}</li>
+          </ul>
+
+          <ul className="font-bold mt-2">
+            Genres(s):
+            <li className="text-gray-300 font-normal">
+              {" "}
+              {data.genres
+                .map((genre: { name: string }) => genre.name)
+                .join(", ")}
+            </li>
+          </ul>
+          <ul className="font-bold mt-2">
+            Runtime:
+            <li className="text-gray-300 font-normal">
+              {data.runtime} minutes
+            </li>
+          </ul>
+          <ul className="font-bold mt-2">
+            Language:
+            <li className="text-gray-300 font-normal">
+              {data.original_language.toUpperCase()}
+            </li>
+          </ul>
+          <ul className="font-bold mt-2">
+            Budget:
+            <li className="text-gray-300 font-normal">
+              {USDollar.format(data.budget)}
+            </li>
+          </ul>
+          <ul className="font-bold mt-2">
+            Production companies:
+            <li className="text-gray-300 font-normal">
+              {" "}
+              {data.production_companies
+                .map((company: { name: string }) => company.name)
+                .join(", ")}
+            </li>
+          </ul>
+
+          <ul className="font-bold mt-2">
+            Popularity:
+            <li className="text-gray-300 font-normal">{data.popularity}</li>
+          </ul>
+          <ul className="font-bold mt-2">
+            Revenue:
+            <li className="text-gray-300 font-normal">
+              {USDollar.format(data.revenue)}
+            </li>
+            <ul className="font-bold mt-2">
+              Voter average:
+              <li className="text-gray-300 font-normal">{data.vote_average}</li>
+            </ul>
+          </ul>
         </div>
       </div>
     </div>
