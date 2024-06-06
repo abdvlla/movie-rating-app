@@ -3,6 +3,8 @@ import "./App.css";
 import { Navbar } from "./components/navbar";
 import { Auth } from "./pages/auth";
 import Home from "./pages/home";
+import { Movie } from "./pages/movie";
+import { TvShow } from "./pages/tvshow";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
             path="/rated"
             element={<h1 className="text-2xl font-bold">Rated Page</h1>}
           />
+          <Route path="/movie/:id" element={<Movie />} />
+          <Route path="/tvshow/:id" element={<TvShow />} />
         </Routes>
       </Router>
     </div>

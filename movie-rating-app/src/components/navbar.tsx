@@ -88,7 +88,7 @@ export const Navbar = () => {
     //   </Dialog>
     // </header>
 
-    <header className="absolute inset-x-0 top-0 z-50">
+    <header className=" inset-x-0 top-0 z-50 absolute">
       <nav
         className="flex items-center justify-between p-6 lg:px-8 mx-auto max-w-6xl"
         aria-label="Global"
@@ -104,19 +104,17 @@ export const Navbar = () => {
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
-          <NavLink to="/">
-            <button>Home</button>
-          </NavLink>
-          <NavLink to="/rated">
-            <button>Rated</button>
-          </NavLink>
+          <button className="text-lg font-semibold leading-6 text-gray-50">
+            <NavLink to="/">Home</NavLink>
+          </button>
+          <button className="text-lg font-semibold leading-6 text-gray-50">
+            <NavLink to="/rated">Rated</NavLink>
+          </button>
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <NavLink to="/auth">
-            <button className="text-sm font-semibold leading-6 text-gray-50">
-              Log in <span aria-hidden="true">&rarr;</span>
-            </button>
-          </NavLink>
+          <button className="text-lg font-semibold leading-6 text-gray-50">
+            <NavLink to="/auth">API Auth</NavLink>
+          </button>
         </div>
       </nav>
       <Dialog
@@ -128,7 +126,10 @@ export const Navbar = () => {
         <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-movieDark px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-50">
           <div className="flex items-center justify-between">
             <NavLink to="/">
-              <button className="-m-1.5 p-1.5 block rounded-lg py-2 text-base font-semibold leading-7">
+              <button
+                className="-m-1.5 p-1.5 block rounded-lg py-2 text-base font-semibold leading-7"
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 {" "}
                 Home
                 <span className="sr-only">Your Company</span>
@@ -147,14 +148,20 @@ export const Navbar = () => {
             <div className="-my-6 divide-y divide-gray-50">
               <div className="space-y-2 py-6">
                 <NavLink to="/rated">
-                  <button className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7">
+                  <button
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
                     Rated
                   </button>
                 </NavLink>
               </div>
               <div className="py-6">
                 <NavLink to="/auth">
-                  <button className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7">
+                  <button
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
                     Log in
                   </button>
                 </NavLink>
