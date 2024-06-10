@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { fetchMovieDetails } from "./query";
+import BackButton from "../../components/BackButton";
 
 export const Movie = () => {
   const { id } = useParams<{ id: string }>();
@@ -49,7 +50,8 @@ export const Movie = () => {
 
   return (
     <div className="max-w-7xl mx-auto mt-8 p-5 rounded-xl">
-      <h2 className="text-3xl font-bold mb-8 text-gray-50">{data.title}</h2>
+      <BackButton />
+      <h2 className="text-3xl font-bold m-6 text-gray-50">{data.title}</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div>
           <img
