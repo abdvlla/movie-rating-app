@@ -15,11 +15,6 @@ export const TvShow = () => {
     queryFn: () => fetchTvShowDetails(id),
   });
 
-  let USDollar = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  });
-
   if (isLoading) {
     return (
       <div role="status" className="flex mx-auto justify-center mt-10">
