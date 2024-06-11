@@ -3,7 +3,7 @@ export const mutationLogin = async () => {
       "https://api.themoviedb.org/3/authentication/guest_session/new",
       {
         headers: {
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3YzA0NzQ0MmE2Y2JmN2VlY2Q1YTE3MTIxYTFjMWViZSIsInN1YiI6IjY0MWRlMTFhYmVmYjA5MDA4OGJlN2Y2OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.CGSURAve9aQqMsg3cCJBv-FgkLQqZJiDm5bgv_mjBOc'
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjY2QwY2JjMWI1MmI3ZTBhNDg4YzlkMzEwYjU1MWM5ZiIsInN1YiI6IjY0MWRlMTFhYmVmYjA5MDA4OGJlN2Y2OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lDJEmVMVseTklbHTHx3iYlp2q1sWelB86AeeohqhDlA'
         }
       }
     );

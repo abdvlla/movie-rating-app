@@ -1,10 +1,19 @@
 import { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
+  const isLoggedIn = localStorage.getItem("guest_session_id") !== null;
+
+  const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem("guest_session_id");
+    navigate("/auth");
+  };
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <header className=" inset-x-0 top-0 z-50 absolute">
       <nav
@@ -30,9 +39,18 @@ export const Navbar = () => {
           </button>
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <button className="text-lg font-semibold leading-6 text-gray-50">
-            <NavLink to="/auth">API Auth</NavLink>
-          </button>
+          {isLoggedIn ? (
+            <button
+              className="text-lg font-semibold leading-6 text-gray-50"
+              onClick={logout}
+            >
+              Log out
+            </button>
+          ) : (
+            <button className="text-lg font-semibold leading-6 text-gray-50">
+              <NavLink to="/auth">Log in</NavLink>
+            </button>
+          )}
         </div>
       </nav>
       <Dialog
