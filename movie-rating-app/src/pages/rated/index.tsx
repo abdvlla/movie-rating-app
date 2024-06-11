@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { DisplayType } from "../home";
 import { useQuery } from "@tanstack/react-query";
 import { fetchRatedMovies, fetchRatedTvShows } from "./query";
 import { ColumnDisplay } from "../home/column-display";
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Navigate } from "react-router-dom";
 
@@ -11,18 +10,16 @@ export const Rated = () => {
   const [activeTabs, setActiveTabs] = useState<DisplayType>(DisplayType.Movies);
 
   const {
-    data: ratedMovies,
+    data: ratedMovies = { results: [] },
     isLoading: isLoadingRatedMovies,
-    error: errorRatedMovies,
   } = useQuery({
     queryKey: ["ratedMovies"],
     queryFn: fetchRatedMovies,
   });
 
   const {
-    data: ratedTvShows,
+    data: ratedTvShows = { results: [] },
     isLoading: isLoadingRatedTvShows,
-    error: errorRatedTvShows,
   } = useQuery({
     queryKey: ["ratedTvShows"],
     queryFn: fetchRatedTvShows,
@@ -32,17 +29,11 @@ export const Rated = () => {
     return <Navigate to="/auth" />;
   }
 
-  useEffect(() => {
-    if (errorRatedMovies || errorRatedTvShows) {
-      toast.error("Failed to fetch rated items.");
-    }
-  }, [errorRatedMovies, errorRatedTvShows]);
-
   if (isLoadingRatedMovies || isLoadingRatedTvShows) {
     return <div>Loading...</div>;
   }
 
-  if (!ratedMovies && !ratedTvShows) {
+  if (!ratedMovies.results.length && !ratedTvShows.results.length) {
     return <div>No rated items found.</div>;
   }
 

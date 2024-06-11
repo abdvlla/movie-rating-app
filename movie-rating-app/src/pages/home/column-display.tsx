@@ -104,7 +104,7 @@ export const ColumnDisplay = (props: Props) => {
                   <input
                     className="p-0 w-12 bg-transparent border-0 text-gray-800 text-center focus:ring-0 dark:text-white font-semibold bg-gray-200"
                     type="number"
-                    defaultValue={isRated ? displayData.rating : 0}
+                    defaultValue={isRated ? displayData.rating ?? 0 : 0}
                     min="0"
                     max="10"
                     step="0.5"
