@@ -61,16 +61,16 @@ export const Navbar = () => {
         <div className="fixed inset-0 z-50" />
         <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-movieDark px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-50">
           <div className="flex items-center justify-between">
-            <NavLink to="/">
-              <button
-                className="-m-1.5 p-1.5 block rounded-lg py-2 text-base font-semibold leading-7"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {" "}
+            <button
+              className="-m-1.5 p-1.5 block rounded-lg py-2 text-base font-semibold leading-7"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {" "}
+              <NavLink to="/">
                 Home
                 <span className="sr-only">Your Company</span>
-              </button>
-            </NavLink>
+              </NavLink>
+            </button>
             <button
               type="button"
               className="-m-2.5 rounded-md p-2.5 text-gray-50"
@@ -83,24 +83,32 @@ export const Navbar = () => {
           <div className="flow-root">
             <div className="-my-6 divide-y divide-gray-50">
               <div className="space-y-2 py-6">
-                <NavLink to="/rated">
-                  <button
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Rated
-                  </button>
-                </NavLink>
+                <button
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <NavLink to="/rated">Rated</NavLink>
+                </button>
               </div>
               <div className="py-6">
-                <NavLink to="/auth">
+                {isLoggedIn ? (
+                  <button
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7"
+                    onClick={() => {
+                      logout();
+                      setMobileMenuOpen(false);
+                    }}
+                  >
+                    Log out
+                  </button>
+                ) : (
                   <button
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Log in
+                    <NavLink to="/auth">Log in</NavLink>
                   </button>
-                </NavLink>
+                )}
               </div>
             </div>
           </div>
